@@ -14,47 +14,41 @@ export const Level2Projects = ({ onNavigate }: Level2ProjectsProps) => {
       title: "🧠 Real-Time Multilingual Emotion Detection",
       description: "Advanced NLP system that detects emotions in real-time across multiple languages using Flask, Deep Learning, and Deep Translator API.",
       tech: ["Flask", "NLP", "Deep Learning", "Python", "Deep Translator"],
-      github: "#",
-      demo: "#",
-      rarity: "legendary"
+      github: "https://github.com/gnyanasameera02-prog/Multilingual-Emotion-Detection-.git",
+      demo: "#"
     },
     {
       id: "intruder-detector", 
       title: "🛡️ Smart Intruder Detector",
       description: "AI-powered security system using OpenCV and DeepFace for facial recognition with automated SMTP email alerts.",
       tech: ["OpenCV", "DeepFace", "Python", "SMTP", "Computer Vision"],
-      github: "#",
-      demo: "#", 
-      rarity: "epic"
+      github: "https://github.com/gnyanasameera02-prog/intruder-detection.git",
+      demo: "#"
     },
     {
       id: "trip-trek",
+      title: "📰 AI-News Summarizer", 
+      description: "Built a multilingual AI web app to extract, summarize, and classify news, with sentiment analysis and a 7-day article tracking backend for trend insights.",
+      tech: ["Python", "Flask", "NLTK", "TextBlob", "newspaper3k", "SQLAlchemy", "Google Translate API"],
+      github: "https://github.com/gnyanasameera02-prog/AI-News-Summariser.git",
+      demo: "#"
+    },
+    {
+      id: "AI-News Summarizer",
       title: "🌍 Trip Trek - Travel Advisory Website", 
       description: "SEO-optimized travel advisory platform built with modern web technologies and responsive design.",
       tech: ["HTML5", "CSS3", "Bootstrap", "JavaScript", "SEO"],
-      github: "#",
-      demo: "#",
-      rarity: "rare"
+      github: "https://github.com/gnyanasameera02-prog/TripTrek-SEO.git",
+      demo: "#"
     }
   ];
 
-  const getRarityColor = (rarity: string) => {
-    switch(rarity) {
-      case "legendary": return "text-power-up border-power-up bg-power-up/10";
-      case "epic": return "text-secondary border-secondary bg-secondary/10";  
-      case "rare": return "text-primary border-primary bg-primary/10";
-      default: return "text-accent border-accent bg-accent/10";
-    }
-  };
-
-  const getRarityGlow = (rarity: string) => {
-    switch(rarity) {
-      case "legendary": return "glow-power";
-      case "epic": return "glow-neon";
-      case "rare": return "glow-power";
-      default: return "";
-    }
-  };
+  // Static glow colors for project box borders
+  const glowColors = [
+    "glow-yellow",
+    "glow-pink",
+    "glow-blue"
+  ];
 
   return (
     <div 
@@ -88,16 +82,10 @@ export const Level2Projects = ({ onNavigate }: Level2ProjectsProps) => {
             {projects.map((project, index) => (
               <div 
                 key={project.id}
-                className={`group relative transition-all duration-300 hover:scale-105 ${getRarityGlow(project.rarity)}`}
+                className={`group relative transition-all duration-300 hover:scale-105 ${glowColors[index % glowColors.length]}`}
               >
                 {/* Treasure Chest Container */}
-                <div className={`dialog-pixel ${getRarityColor(project.rarity)} p-6 h-full`}>
-                  {/* Rarity Badge */}
-                  <div className="absolute -top-2 -right-2">
-                    <div className={`dialog-pixel px-2 py-1 ${getRarityColor(project.rarity)}`}>
-                      <span className="font-pixel text-xs uppercase">{project.rarity}</span>
-                    </div>
-                  </div>
+                <div className={`dialog-pixel p-6 h-full`}>
 
                   {/* Project Content */}
                   <div className="space-y-4">
@@ -130,6 +118,7 @@ export const Level2Projects = ({ onNavigate }: Level2ProjectsProps) => {
                         variant="level" 
                         size="sm"
                         className="flex-1 flex items-center justify-center gap-1"
+                        onClick={() => window.open(project.github, "_blank")}
                       >
                         <Github size={12} />
                         <span className="text-xs">CODE</span>
@@ -161,7 +150,12 @@ export const Level2Projects = ({ onNavigate }: Level2ProjectsProps) => {
               <p className="font-pixel text-xs text-foreground/80 mb-4 leading-relaxed">
                 Explore the complete collection of projects and contributions
               </p>
-              <PixelButton variant="portal" size="lg" className="glow-neon">
+              <PixelButton 
+                variant="portal" 
+                size="lg" 
+                className="glow-neon"
+                onClick={() => window.open("https://github.com/gnyanasameera02-prog", "_blank")}
+              >
                 <Github className="mr-2" size={16} />
                 VIEW GITHUB PROFILE
               </PixelButton>

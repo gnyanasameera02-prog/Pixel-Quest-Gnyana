@@ -25,7 +25,7 @@ export const Level3Skills = ({ onNavigate }: Level3SkillsProps) => {
       type: "Tools",
       icon: "🔧",
       description: "Utility Gear",
-      skills: ["GitHub", "VS Code", "Git", "Linux", "Jupyter"],
+      skills: ["GitHub", "VS Code", "Git"],
       color: "text-primary border-primary"
     },
     {

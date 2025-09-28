@@ -12,67 +12,45 @@ export const FinalAchievements = ({ onNavigate }: FinalAchievementsProps) => {
       id: "gate",
       title: "🎯 GATE 2025 Qualified",
       description: "Successfully qualified for Graduate Aptitude Test in Engineering",
-      rarity: "legendary",
-      icon: <Trophy className="w-6 h-6" />,
-      year: "2025"
+      icon: <Trophy className="w-6 h-6" />
     },
     {
       id: "seo-hackathon",
       title: "🥉 3rd Place in SEO Hackathon", 
-      description: "Achieved bronze medal in competitive SEO optimization challenge",
-      rarity: "epic",
-      icon: <Medal className="w-6 h-6" />,
-      year: "2024"
+      description: "Achieved 3rd place & got prize money in a competitive SEO optimization challenge",
+      icon: <Medal className="w-6 h-6" />
     },
     {
       id: "google-ai",
       title: "🤖 Google AI-ML Virtual Internship",
       description: "Completed comprehensive AI/ML training program by Google",
-      rarity: "epic", 
-      icon: <Award className="w-6 h-6" />,
-      year: "2024"
+      icon: <Award className="w-6 h-6" />
     },
     {
       id: "zero-trust",
       title: "🔐 Zero Trust Cloud Security Specialist",
-      description: "Multiple certifications: ZTCA, EDU-102, NPTEL IoT, Cybersecurity",
-      rarity: "rare",
-      icon: <Star className="w-6 h-6" />,
-      year: "2024"
+      description: "Multiple certifications: ZTCA,Zero Trust Cloud Security Virtual Internship",
+      icon: <Star className="w-6 h-6" />
+    },
+    {
+      id: "IOT",
+      title: "🏠 Introduction to Internet of Things certification",
+      description: "Certification from NPTEL with Elite + Silver",
+      icon: <Star className="w-6 h-6" />
     },
     {
       id: "design-lead",
       title: "🎨 Design Lead - YES CLUB",
-      description: "Leading design initiatives and creative projects",
-      rarity: "rare",
-      icon: <Award className="w-6 h-6" />,
-      year: "2024-2025"
+      description: "Spearheading design projects, mentoring team members, and ensuring high-quality creative outputs",
+      icon: <Award className="w-6 h-6" />
     }
   ];
 
-  const getRarityStyles = (rarity: string) => {
-    switch(rarity) {
-      case "legendary":
-        return {
-          container: "text-power-up border-power-up bg-power-up/20 glow-power",
-          badge: "bg-power-up text-power-up-foreground"
-        };
-      case "epic":
-        return {
-          container: "text-secondary border-secondary bg-secondary/20 glow-neon", 
-          badge: "bg-secondary text-secondary-foreground"
-        };
-      case "rare":
-        return {
-          container: "text-primary border-primary bg-primary/20",
-          badge: "bg-primary text-primary-foreground"
-        };
-      default:
-        return {
-          container: "text-accent border-accent bg-accent/20",
-          badge: "bg-accent text-accent-foreground"
-        };
-    }
+  // Use a consistent style for all achievements
+  const getAchievementStyle = () => {
+    return {
+      container: "text-primary border-primary bg-primary/20"
+    };
   };
 
   return (
@@ -111,23 +89,9 @@ export const FinalAchievements = ({ onNavigate }: FinalAchievementsProps) => {
             {achievements.map((achievement, index) => (
               <div
                 key={achievement.id}
-                className={`dialog-pixel p-6 relative group hover:scale-105 transition-all duration-300 ${getRarityStyles(achievement.rarity).container}`}
+                className={`dialog-pixel p-6 relative group hover:scale-105 transition-all duration-300 ${getAchievementStyle().container}`}
                 style={{ animationDelay: `${index * 150}ms` }}
               >
-                {/* Rarity Badge */}
-                <div className="absolute -top-2 -right-2">
-                  <div className={`dialog-pixel px-2 py-1 ${getRarityStyles(achievement.rarity).badge}`}>
-                    <span className="font-pixel text-xs uppercase">{achievement.rarity}</span>
-                  </div>
-                </div>
-
-                {/* Year Badge */}
-                <div className="absolute -top-2 -left-2">
-                  <div className="dialog-pixel px-2 py-1 bg-muted text-muted-foreground">
-                    <span className="font-pixel text-xs">{achievement.year}</span>
-                  </div>
-                </div>
-
                 {/* Achievement Content */}
                 <div className="space-y-4">
                   <div className="flex items-center gap-3">
@@ -165,22 +129,18 @@ export const FinalAchievements = ({ onNavigate }: FinalAchievementsProps) => {
             <div className="dialog-pixel inline-block p-8 glow-power">
               <h3 className="font-pixel text-lg text-power-up mb-6">FINAL STATS</h3>
               
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+              <div className="grid grid-cols-3 gap-6">
                 <div className="space-y-2">
-                  <div className="font-pixel text-2xl text-power-up animate-pulse">5</div>
-                  <div className="font-pixel text-xs text-foreground/80">MAJOR ACHIEVEMENTS</div>
+                  <div className="font-pixel text-2xl text-power-up animate-pulse">1</div>
+                  <div className="font-pixel text-xs text-foreground/80">INDUSTRY EXPERIENCE</div>
                 </div>
                 <div className="space-y-2">
-                  <div className="font-pixel text-2xl text-secondary animate-pulse">3+</div>
+                  <div className="font-pixel text-2xl text-secondary animate-pulse">4+</div>
                   <div className="font-pixel text-xs text-foreground/80">CERTIFICATIONS</div>
                 </div>
                 <div className="space-y-2">
                   <div className="font-pixel text-2xl text-primary animate-pulse">1</div>
                   <div className="font-pixel text-xs text-foreground/80">LEADERSHIP ROLE</div>
-                </div>
-                <div className="space-y-2">
-                  <div className="font-pixel text-2xl text-accent animate-pulse">100%</div>
-                  <div className="font-pixel text-xs text-foreground/80">COMPLETION RATE</div>
                 </div>
               </div>
 

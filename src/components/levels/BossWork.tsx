@@ -1,6 +1,6 @@
 import { PixelButton } from "@/components/ui/pixel-button";
 import { GameLevel } from "../GameLayout";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 interface BossWorkProps {
   onNavigate: (level: GameLevel) => void;
@@ -24,8 +24,19 @@ export const BossWork = ({ onNavigate }: BossWorkProps) => {
     skills: ["Machine Learning", "Data Analysis", "Web Development", "Alert Systems", "Sensor Data Processing"]
   };
 
+  const sciFiAudioRef = useRef<HTMLAudioElement | null>(null);
+
   const startBattle = () => {
     setBattlePhase("fighting");
+    // Play sci-fi-tech sound
+    if (!sciFiAudioRef.current) {
+      sciFiAudioRef.current = new Audio("/sci-fi-technology-scanner-194042.mp3");
+      sciFiAudioRef.current.loop = true;
+      sciFiAudioRef.current.volume = 0.6;
+    }
+    sciFiAudioRef.current.currentTime = 0;
+    sciFiAudioRef.current.play().catch(() => {});
+
     // Simulate boss battle
     const interval = setInterval(() => {
       setBossHealth(prev => {
@@ -43,6 +54,10 @@ export const BossWork = ({ onNavigate }: BossWorkProps) => {
   useEffect(() => {
     if (battlePhase === "fighting") {
       startBattle();
+    }
+    if (battlePhase === "victory" && sciFiAudioRef.current) {
+      sciFiAudioRef.current.pause();
+      sciFiAudioRef.current.currentTime = 0;
     }
   }, [battlePhase]);
 

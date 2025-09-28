@@ -9,8 +9,9 @@ interface ContactPortalProps {
 }
 
 export const ContactPortal = ({ onNavigate }: ContactPortalProps) => {
+  // ✅ Declare state first
   const [terminalInput, setTerminalInput] = useState("");
-  const [terminalHistory, setTerminalHistory] = useState<string[]>([
+  const [terminalHistory, setTerminalHistory] = useState<(string | JSX.Element)[]>([
     "> CONTACT_PORTAL initialized...",
     "> Ready to establish connection with Gnyana Sameera",
     "> Type 'help' for available commands"
@@ -21,22 +22,58 @@ export const ContactPortal = ({ onNavigate }: ContactPortalProps) => {
     message: ""
   });
 
+  const contactLinks = [
+    {
+      platform: "Email",
+      icon: <Mail className="w-5 h-5" />,
+      value: "gnyanapadala@gmail.com",
+      href: "mailto:gnyanapadala@gmail.com",
+      color: "text-primary border-primary"
+    },
+    {
+      platform: "LinkedIn",
+      icon: <Linkedin className="w-5 h-5" />,
+      value: "Connect on LinkedIn",
+      href: "https://www.linkedin.com/in/gnyana-sameera-004106279/",
+      color: "text-accent border-accent"
+    },
+    {
+      platform: "GitHub",
+      icon: <Github className="w-5 h-5" />,
+      value: "View GitHub Profile",
+      href: "https://github.com/gnyanasameera02-prog",
+      color: "text-secondary border-secondary"
+    }
+  ];
+
   const handleTerminalCommand = (command: string) => {
     const cmd = command.toLowerCase().trim();
-    let response = "";
+    let response: string | JSX.Element = "";
 
     switch(cmd) {
       case "help":
         response = "Available commands: email, linkedin, github, location, skills, projects, clear";
         break;
       case "email":
-        response = "Email: gnyana.sameera@example.com";
+        response = (
+          <span>
+            Email: <a href="mailto:gnyanapadala@gmail.com" className="underline text-accent">gnyanapadala@gmail.com</a>
+          </span>
+        );
         break;
       case "linkedin":
-        response = "LinkedIn: Connect with Gnyana Sameera";
+        response = (
+          <span>
+            LinkedIn: <a href="https://www.linkedin.com/in/gnyana-sameera-004106279/" target="_blank" rel="noopener noreferrer" className="underline text-accent">Connect with Gnyana Sameera</a>
+          </span>
+        );
         break;
       case "github":
-        response = "GitHub: Explore repositories and projects";
+        response = (
+          <span>
+            GitHub: <a href="https://github.com/gnyanasameera02-prog" target="_blank" rel="noopener noreferrer" className="underline text-accent">Explore repositories and projects</a>
+          </span>
+        );
         break;
       case "location":
         response = "Location: Visakhapatnam, India";
@@ -71,30 +108,6 @@ export const ContactPortal = ({ onNavigate }: ContactPortalProps) => {
       "> Portal connection established"
     ]);
   };
-
-  const contactLinks = [
-    {
-      platform: "Email",
-      icon: <Mail className="w-5 h-5" />,
-      value: "gnyana.sameera@example.com",
-      href: "mailto:gnyana.sameera@example.com",
-      color: "text-primary border-primary"
-    },
-    {
-      platform: "LinkedIn",
-      icon: <Linkedin className="w-5 h-5" />,
-      value: "Connect on LinkedIn",
-      href: "#",
-      color: "text-accent border-accent"
-    },
-    {
-      platform: "GitHub",
-      icon: <Github className="w-5 h-5" />,
-      value: "View GitHub Profile",
-      href: "#",
-      color: "text-secondary border-secondary"
-    }
-  ];
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-card to-background pixel-grid relative overflow-hidden">
@@ -177,7 +190,13 @@ export const ContactPortal = ({ onNavigate }: ContactPortalProps) => {
               <div className="space-y-3">
                 <div className="font-pixel text-sm text-accent">QUICK CONNECT:</div>
                 {contactLinks.map((contact) => (
-                  <div key={contact.platform} className={`dialog-pixel p-3 hover:glow-power transition-all duration-300 cursor-pointer ${contact.color} bg-current/5`}>
+                  <a
+                    key={contact.platform}
+                    href={contact.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`dialog-pixel p-3 hover:glow-power transition-all duration-300 cursor-pointer ${contact.color} bg-current/5 block`}
+                  >
                     <div className="flex items-center gap-3">
                       {contact.icon}
                       <div>
@@ -185,7 +204,7 @@ export const ContactPortal = ({ onNavigate }: ContactPortalProps) => {
                         <div className="font-pixel text-xs opacity-80">{contact.value}</div>
                       </div>
                     </div>
-                  </div>
+                  </a>
                 ))}
               </div>
             </div>
@@ -245,7 +264,7 @@ export const ContactPortal = ({ onNavigate }: ContactPortalProps) => {
                   </div>
                   <div className="flex items-center gap-2">
                     <Mail className="w-4 h-4 text-accent" />
-                    <span className="font-pixel text-xs text-foreground/80">gnyana.sameera@example.com</span>
+                    <span className="font-pixel text-xs text-foreground/80">gnyanapadala@gmail.com</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <Phone className="w-4 h-4 text-secondary" />

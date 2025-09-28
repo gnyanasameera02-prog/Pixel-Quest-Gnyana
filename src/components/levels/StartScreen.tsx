@@ -30,8 +30,13 @@ export const StartScreen = ({ onNavigate }: StartScreenProps) => {
             GNYANA SAMEERA
           </h2>
           <div className="font-pixel text-sm md:text-base text-secondary animate-pulse">
-            AI/ML Developer • Computer Science Student • Level Designer
+            AI/ML Enthusiast • Computer Science Student • Web Innovator 
           </div>
+          
+         <div className="font-pixel text-sm md:text-base text-accent animate-pulse">
+          "Passionate about creating – whether it’s code,websites,or designs."
+          </div>
+
         </div>
 
         {/* Retro Game Menu */}

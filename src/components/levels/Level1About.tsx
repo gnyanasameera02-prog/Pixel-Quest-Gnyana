@@ -1,6 +1,6 @@
 import { PixelButton } from "@/components/ui/pixel-button";
 import { GameLevel } from "../GameLayout";
-import heroSprite from "@/assets/hero-sprite.png";
+import samImg from "@/assets/sam.png";
 
 interface Level1AboutProps {
   onNavigate: (level: GameLevel) => void;
@@ -10,15 +10,15 @@ export const Level1About = ({ onNavigate }: Level1AboutProps) => {
   const educationData = [
     {
       id: "college",
-      title: "🎓 B.Sc. Computer Science",
+      title: "🧠 Knowledge Power-Up",
       subtitle: "Gayatri Vidya Parishad College of Engineering",
       period: "2022–2026",
       gpa: "GPA: 8.95/10",
-      description: "Specializing in AI/ML and software development"
+      description: "CS Undergrad | Aspiring Software Engineer"
     },
     {
       id: "junior",
-      title: "📚 Intermediate Education", 
+      title: "� Skill Unlock: Science", 
       subtitle: "Narayana Junior College",
       period: "2020–2022",
       gpa: "GPA: 9.7/10",
@@ -26,7 +26,7 @@ export const Level1About = ({ onNavigate }: Level1AboutProps) => {
     },
     {
       id: "school",
-      title: "🏫 Secondary Education",
+      title: "� Achievement Unlocked: Excellence",
       subtitle: "Narayana School", 
       period: "2019–2020",
       gpa: "GPA: 10/10",
@@ -35,11 +35,12 @@ export const Level1About = ({ onNavigate }: Level1AboutProps) => {
   ];
 
   const funFacts = [
-    "💡 Loves solving complex algorithms",
-    "🎮 Inspired by retro gaming aesthetics", 
-    "🚀 Dreams of building AI that helps humanity",
-    "📖 Always learning new technologies",
-    "🌟 Believes in pixel-perfect execution"
+    "Loves solving complex algorithms",
+    "Enjoys exploring AI/ML and building intelligent systems", 
+    "Loves creating projects with real-world impact",
+    "Blends creativity with technical skills — from web design to AI models",
+    "Designs fun games and creative posters alongside coding",
+    "Thrives in team leadership as Design Lead at YES Club"
   ];
 
   return (
@@ -62,7 +63,7 @@ export const Level1About = ({ onNavigate }: Level1AboutProps) => {
             <div className="text-center lg:text-left space-y-6">
               <div className="relative inline-block">
                 <img 
-                  src={heroSprite} 
+                  src={samImg} 
                   alt="Gnyana Hero Sprite"
                   className="w-48 h-48 mx-auto lg:mx-0 animate-pixel-bounce"
                 />
@@ -77,9 +78,7 @@ export const Level1About = ({ onNavigate }: Level1AboutProps) => {
                 </h2>
                 <div className="dialog-pixel text-left">
                   <p className="font-pixel text-xs leading-relaxed text-foreground/90">
-                    A passionate Computer Science student and AI/ML enthusiast on a quest 
-                    to create innovative solutions. Currently exploring the vast world of 
-                    artificial intelligence while building real-world applications.
+                  Passionate Computer Science student with a love for solving complex algorithms and building real-world projects. Interested in AI/ML, computer vision, and web solutions, I enjoy creating applications that blend innovation with creativity while constantly learning and growing.
                   </p>
                 </div>
               </div>
@@ -119,12 +118,11 @@ export const Level1About = ({ onNavigate }: Level1AboutProps) => {
                       <div className="font-pixel text-xs text-foreground/70 mt-2">{edu.description}</div>
                       
                       {/* Progress bar */}
-                      <div className="w-full bg-muted h-2 mt-2">
-                        <div 
-                          className="bg-gradient-power h-2 transition-all duration-1000"
-                          style={{ width: `${100 - (index * 5)}%` }}
-                        />
-                      </div>
+                        {/* Creative pixel line */}
+                        <div className="w-full flex items-center justify-center my-2">
+                          <div className="h-2 w-full bg-accent rounded animate-pulse" style={{ boxShadow: '0 0 8px #39ff14, 0 0 2px #39ff14' }} />
+                        </div>
+                      
                     </div>
                   </div>
                 ))}

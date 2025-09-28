@@ -40,3 +40,24 @@
 .read-the-docs {
   color: #888;
 }
+
+/* Animated color cycle for project box glow borders */
+.glow-cycle-yellow-pink-blue {
+  box-shadow: 0 0 16px #ffe600, 0 0 32px #ff69b4, 0 0 48px #00e6ff;
+  animation: glowColorCycle 2.5s linear infinite;
+}
+
+@keyframes glowColorCycle {
+  0% {
+    box-shadow: 0 0 16px #ffe600, 0 0 0px #ff69b4, 0 0 0px #00e6ff;
+  }
+  33% {
+    box-shadow: 0 0 0px #ffe600, 0 0 16px #ff69b4, 0 0 0px #00e6ff;
+  }
+  66% {
+    box-shadow: 0 0 0px #ffe600, 0 0 0px #ff69b4, 0 0 16px #00e6ff;
+  }
+  100% {
+    box-shadow: 0 0 16px #ffe600, 0 0 0px #ff69b4, 0 0 0px #00e6ff;
+  }
+}
