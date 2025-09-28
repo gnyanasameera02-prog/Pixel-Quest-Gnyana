@@ -11,11 +11,12 @@ export const StartScreen = ({ onNavigate }: StartScreenProps) => {
     <div 
       className="min-h-screen flex flex-col items-center justify-center relative pixel-grid"
       style={{
-        backgroundImage: `url(${cityscapeBg})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat'
-      }}
+  backgroundImage: `url(/cityscape-bg.png)`,
+  backgroundSize: 'cover',
+  backgroundPosition: 'center',
+  backgroundRepeat: 'no-repeat'
+}}
+
     >
       {/* Dark overlay for better text readability */}
       <div className="absolute inset-0 bg-background/80" />
